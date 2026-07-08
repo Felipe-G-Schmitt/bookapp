@@ -1,12 +1,12 @@
 // App de Busca e Organizacao de Livros (Open Library API).
-// PARTE 1 - Estrutura inicial e navegacao.
+// PARTE 2 - Integracao com a API publica.
 //
-// Nesta parte montamos apenas o esqueleto do app: o MaterialApp e a
-// navegacao por abas (BottomNavigationBar), seguindo o exemplo da aula.
-// As telas reais (busca e favoritos) serao adicionadas nas proximas partes.
-// Por enquanto usamos telas provisorias (placeholders).
+// A aba "Buscar" agora usa a tela real (TelaBusca), que consulta a API.
+// A aba "Favoritos" continua como placeholder ate a parte de armazenamento local.
 
 import 'package:flutter/material.dart';
+
+import 'tela_busca.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   // Lista de telas exibidas em cada aba.
   // Usamos IndexedStack para manter o estado de cada aba ao alternar.
   final List<Widget> _paginas = const [
-    _PlaceholderBusca(),
+    TelaBusca(),
     _PlaceholderFavoritos(),
   ];
 
@@ -70,40 +70,9 @@ class _HomePageState extends State<HomePage> {
 }
 
 // -------------------------------------------------------------------
-// Telas provisorias (placeholders).
-// Serao substituidas pelas telas reais nas proximas partes do trabalho.
+// Tela provisoria de favoritos.
+// Sera substituida pela tela real na parte de armazenamento local.
 // -------------------------------------------------------------------
-
-class _PlaceholderBusca extends StatelessWidget {
-  const _PlaceholderBusca();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Buscar Livros'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.search, size: 48, color: Colors.grey),
-              SizedBox(height: 16),
-              Text(
-                'Tela de busca (em desenvolvimento).',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class _PlaceholderFavoritos extends StatelessWidget {
   const _PlaceholderFavoritos();
