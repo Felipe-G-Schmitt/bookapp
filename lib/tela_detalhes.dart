@@ -1,6 +1,3 @@
-// Tela de detalhes do livro selecionado.
-// Mostra capa, titulo, autor e ano, e permite favoritar/desfavoritar.
-
 import 'package:flutter/material.dart';
 
 import 'favoritos.dart';
@@ -69,7 +66,6 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Capa (ou um icone caso nao exista).
             SizedBox(
               height: 240,
               child: livro.urlCapa != null
@@ -109,7 +105,6 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
             ),
             const SizedBox(height: 24),
 
-            // Botao de favoritar / desfavoritar.
             _carregando
                 ? const CircularProgressIndicator()
                 : ElevatedButton.icon(
@@ -133,7 +128,6 @@ class _TelaDetalhesState extends State<TelaDetalhes> {
   }
 }
 
-// Widget reutilizavel para mostrar um campo de informacao (icone + label + valor).
 class _CampoInfo extends StatelessWidget {
   final IconData icone;
   final String label;

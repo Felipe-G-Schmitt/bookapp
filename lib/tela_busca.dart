@@ -1,11 +1,3 @@
-// Tela de busca de livros.
-// PARTE 2 - Integracao com a API publica.
-//
-// Aqui a busca ja consulta a Open Library e mostra os resultados em cards,
-// com estados de loading, erro e vazio (seguindo o padrao do exemplo da aula).
-// A navegacao para a tela de detalhes e o favoritar virao nas proximas partes;
-// por enquanto, ao tocar num livro, mostramos apenas um aviso.
-
 import 'package:flutter/material.dart';
 
 import 'api_livros.dart';
@@ -25,7 +17,7 @@ class _TelaBuscaState extends State<TelaBusca> {
   bool _isLoading = false;
   String? _erro;
   List<Livro> _resultados = [];
-  bool _jaBuscou = false; // controla a mensagem inicial
+  bool _jaBuscou = false;
 
   @override
   void dispose() {
@@ -58,7 +50,6 @@ class _TelaBuscaState extends State<TelaBusca> {
     }
   }
 
-  // Limpa o campo e os resultados.
   void _limpar() {
     setState(() {
       _controller.clear();
@@ -68,7 +59,6 @@ class _TelaBuscaState extends State<TelaBusca> {
     });
   }
 
-  // Abre a tela de detalhes do livro selecionado.
   void _aoTocarLivro(Livro livro) {
     Navigator.push(
       context,
@@ -117,7 +107,6 @@ class _TelaBuscaState extends State<TelaBusca> {
             ),
           ),
 
-          // Area de resultados (ocupa o resto da tela).
           Expanded(child: _construirResultados()),
         ],
       ),
@@ -154,7 +143,6 @@ class _TelaBuscaState extends State<TelaBusca> {
       );
     }
 
-    // Mensagem inicial, antes de qualquer busca.
     if (!_jaBuscou) {
       return const Center(
         child: Padding(
@@ -168,7 +156,6 @@ class _TelaBuscaState extends State<TelaBusca> {
       );
     }
 
-    // Nenhum resultado encontrado.
     if (_resultados.isEmpty) {
       return const Center(
         child: Padding(
@@ -182,7 +169,6 @@ class _TelaBuscaState extends State<TelaBusca> {
       );
     }
 
-    // Lista de resultados em cards.
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       itemCount: _resultados.length,

@@ -1,20 +1,12 @@
-// Comunicacao com a API publica Open Library.
-// Segue o mesmo padrao de tratamento de erro do exemplo (timeout, statusCode, etc).
-
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import 'livro.dart';
 
-// Busca livros por titulo, autor ou palavra-chave.
 Future<List<Livro>> buscarLivros(String termo) async {
-  // A Open Library retorna varios resultados; limitamos a 20 para ficar rapido.
   final uri = Uri.https('openlibrary.org', '/search.json', {
     'q': termo,
     'limit': '20',
-    // Pedimos apenas os campos que usamos, deixando a resposta mais leve.
     'fields': 'key,title,author_name,first_publish_year,cover_i',
   });
 

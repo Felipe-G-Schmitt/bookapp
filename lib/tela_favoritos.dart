@@ -1,5 +1,3 @@
-// Tela que lista os livros favoritados e permite remove-los.
-
 import 'package:flutter/material.dart';
 
 import 'favoritos.dart';
@@ -50,7 +48,6 @@ class _TelaFavoritosState extends State<TelaFavoritos> {
       context,
       MaterialPageRoute(builder: (_) => TelaDetalhes(livro: livro)),
     );
-    // Ao voltar da tela de detalhes, recarrega (o usuario pode ter desfavoritado la).
     _carregar();
   }
 

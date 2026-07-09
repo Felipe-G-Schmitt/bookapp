@@ -1,9 +1,3 @@
-// App de Busca e Organizacao de Livros (Open Library API).
-//
-// Versao completa: a aba "Buscar" consulta a API e a aba "Favoritos"
-// mostra os livros salvos localmente. A navegacao para detalhes acontece
-// a partir das duas telas.
-
 import 'package:flutter/material.dart';
 
 import 'tela_busca.dart';
@@ -40,9 +34,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  // Usamos uma Key na tela de favoritos para forcar o recarregamento
-  // sempre que o usuario voltar para essa aba (assim um livro favoritado
-  // na busca ja aparece na lista).
   Key _favoritosKey = UniqueKey();
 
   @override
@@ -59,7 +50,6 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
-            // Ao entrar na aba de favoritos, recriamos a tela para recarregar a lista.
             if (index == 1) _favoritosKey = UniqueKey();
           });
         },
