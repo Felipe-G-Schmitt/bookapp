@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'api_livros.dart';
 import 'livro.dart';
+import 'tela_detalhes.dart';
 
 class TelaBusca extends StatefulWidget {
   const TelaBusca({super.key});
@@ -67,13 +68,11 @@ class _TelaBuscaState extends State<TelaBusca> {
     });
   }
 
-  // Placeholder: a navegacao para detalhes sera implementada na proxima parte.
+  // Abre a tela de detalhes do livro selecionado.
   void _aoTocarLivro(Livro livro) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Detalhes de "${livro.titulo}" (em desenvolvimento).'),
-        duration: const Duration(seconds: 2),
-      ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => TelaDetalhes(livro: livro)),
     );
   }
 
